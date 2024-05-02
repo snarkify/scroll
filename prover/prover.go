@@ -284,7 +284,7 @@ func (r *Prover) proveChunk(task *store.ProvingTask) (*message.ChunkProof, error
 	if task.Task.ChunkTaskDetail == nil {
 		return nil, fmt.Errorf("ChunkTaskDetail is empty")
 	}
-	traces, err := r.getSortedTracesByHashes(task.Task.ChunkTaskDetail.BlockHashes)
+	traces, err := r.GetSortedTracesByHashes(task.Task.ChunkTaskDetail.BlockHashes)
 	if err != nil {
 		return nil, fmt.Errorf("get traces from eth node failed, block hashes: %v, err: %v", task.Task.ChunkTaskDetail.BlockHashes, err)
 	}
@@ -376,7 +376,7 @@ func (r *Prover) submitErr(task *store.ProvingTask, proofFailureType message.Pro
 	return nil
 }
 
-func (r *Prover) getSortedTracesByHashes(blockHashes []common.Hash) ([]*types.BlockTrace, error) {
+func (r *Prover) GetSortedTracesByHashes(blockHashes []common.Hash) ([]*types.BlockTrace, error) {
 	if len(blockHashes) == 0 {
 		return nil, fmt.Errorf("blockHashes is empty")
 	}

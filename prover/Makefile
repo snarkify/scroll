@@ -32,6 +32,12 @@ mock-prover: ## Build the mocked Prover instance.
 gpu-prover: libzkp ## Build the GPU Prover instance.
 	GOBIN=$(PWD)/build/bin go build -ldflags "-X scroll-tech/common/version.ZkVersion=${ZK_VERSION}" -tags gpu -o $(PWD)/build/bin/prover ./cmd
 
+snarkify-chunk-prover: libzkp ## Build the snarkify-chunk Prover instance.
+	GOBIN=$(PWD)/build/bin go build -ldflags "-X scroll-tech/common/version.ZkVersion=${ZK_VERSION}" -tags snarkify_chunk -o $(PWD)/build/bin/prover ./cmd
+
+snarkify-batch-prover: libzkp ## Build the snarkify-batch Prover instance.
+	GOBIN=$(PWD)/build/bin go build -ldflags "-X scroll-tech/common/version.ZkVersion=${ZK_VERSION}" -tags snarkify_batch -o $(PWD)/build/bin/prover ./cmd
+
 test-prover: libzkp
 	go test -tags ffi -timeout 0 -v ./prover
 
