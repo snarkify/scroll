@@ -10,6 +10,7 @@ import (
 	"github.com/scroll-tech/go-ethereum/log"
 	"github.com/snarkify/snarkify-sdk-go/snarkify"
 	"github.com/urfave/cli/v2"
+	"scroll-tech/common/types/message"
 	"scroll-tech/common/utils"
 	"scroll-tech/prover"
 	"scroll-tech/prover/config"
