@@ -32,6 +32,7 @@ func Run(ctx *cli.Context) {
 		if err != nil {
 			log.Crit("failed to load config file", "config file", cfgFile, "error", err)
 		}
+		cfg.Core.ProofType = message.ProofTypeBatch
 		c, err := core.NewProverCore(cfg.Core)
 		batchProof, err := c.ProveBatch("default", input.ChunkInfos, input.ChunkProofs)
 		if err != nil {
