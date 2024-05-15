@@ -34,13 +34,16 @@ func Run(ctx *cli.Context) {
 		if err != nil {
 			log.Crit("failed to load config file", "config file", cfgFile, "error", err)
 		}
+		cfg.Core.ProofType = message.ProofTypeChunk
 		// Create prover
 		r, err := prover.NewChunkProver(context.Background(), cfg)
+		if err != nil {
+			return ProofOutput{}, fmt.Errorf("failed to create prover, err: %v", err)
+		}
 		traces, err := r.GetSortedTracesByHashes(input.BlockHashes)
 		if err != nil {
 			return ProofOutput{}, fmt.Errorf("get traces from eth node failed, block hashes: %v, err: %v", input.BlockHashes, err)
 		}
-		cfg.Core.ProofType = message.ProofTypeChunk
 		c, err := core.NewProverCore(cfg.Core)
 		chunkProof, err := c.ProveChunk("default", traces)
 		if err != nil {
