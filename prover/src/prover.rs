@@ -22,6 +22,7 @@ pub struct Prover<'a> {
     geth_client: Option<Rc<RefCell<GethClient>>>,
 }
 
+
 impl<'a> Prover<'a> {
     pub fn new(config: &'a Config, coordinator_listener: Box<dyn Listener>) -> Result<Self> {
         let proof_type = config.proof_type;

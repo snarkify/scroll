@@ -52,7 +52,7 @@ impl Config {
     }
 }
 
-pub static SCROLL_PROVER_ASSETS_DIR_ENV_NAME: &str = "SCROLL_PROVER_ASSETS_DIR";
+static SCROLL_PROVER_ASSETS_DIR_ENV_NAME: &str = "SCROLL_PROVER_ASSETS_DIR";
 static mut SCROLL_PROVER_ASSETS_DIRS: Vec<String> = vec![];
 
 #[derive(Debug)]

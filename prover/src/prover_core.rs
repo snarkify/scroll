@@ -1,5 +1,4 @@
-use anyhow::{bail, Context, Error, Ok, Result};
-use ethers_core::types::U64;
+use anyhow::{Context, Ok, Result};
 
 use std::{cell::RefCell, rc::Rc};
 
@@ -7,7 +6,7 @@ use crate::{
     config::Config,
     geth_client::GethClient,
     key_signer::KeySigner,
-    types::{ProofFailureType, ProofStatus, ProofType},
+    types::ProofType,
     zk_circuits_handler::{CircuitsHandler, CircuitsHandlerProvider},
 };
 
@@ -15,9 +14,7 @@ use super::types::{ProofDetail, Task};
 
 pub struct Prover<'a> {
     config: &'a Config,
-    key_signer: Rc<KeySigner>,
     circuits_handler_provider: RefCell<CircuitsHandlerProvider<'a>>,
-    geth_client: Option<Rc<RefCell<GethClient>>>,
 }
 
 impl<'a> Prover<'a> {
@@ -26,7 +23,6 @@ impl<'a> Prover<'a> {
         let keystore_path = &config.keystore_path;
         let keystore_password = &config.keystore_password;
 
-        let key_signer = Rc::new(KeySigner::new(keystore_path, keystore_password)?);
 
         let geth_client = if config.proof_type == ProofType::Chunk {
             Some(Rc::new(RefCell::new(
@@ -45,9 +41,7 @@ impl<'a> Prover<'a> {
 
         let prover = Prover {
             config,
-            key_signer: Rc::clone(&key_signer),
             circuits_handler_provider: RefCell::new(provider),
-            geth_client,
         };
 
         Ok(prover)
@@ -57,9 +51,6 @@ impl<'a> Prover<'a> {
         self.config.proof_type
     }
 
-    pub fn get_public_key(&self) -> String {
-        self.key_signer.get_public_key()
-    }
 
     pub fn prove_task(&self, task: &Task) -> Result<ProofDetail> {
         log::info!("[prover] start to prove_task, task id: {}", task.id);
@@ -80,15 +71,5 @@ impl<'a> Prover<'a> {
 
         proof_detail.proof_data = handler.get_proof_data(task.task_type, task)?;
         Ok(proof_detail)
-    }
-
-    fn get_latest_block_number_value(&self) -> Result<Option<U64>> {
-        let number = self
-            .geth_client
-            .as_ref()
-            .unwrap()
-            .borrow_mut()
-            .block_number()?;
-        Ok(number.as_number())
     }
 }
