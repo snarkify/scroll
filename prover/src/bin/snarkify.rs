@@ -33,7 +33,7 @@ fn init_prover() -> Prover<'static> {
 
 
 thread_local! {
-    static GLOBAL: RefCell<Prover<'static>> = RefCell::new(init_prover());
+    static PROVER: RefCell<Prover<'static>> = RefCell::new(init_prover());
 }
 
 
@@ -44,8 +44,8 @@ impl ProofHandler for MyProofHandler {
     type Error = String;
 
     async fn prove(data: Self::Input) -> Result<Self::Output, Self::Error> {
-        GLOBAL.with_borrow(|v| {
-            v.prove_task(&data).map_err(|e| e.to_string())
+        PROVER.with_borrow(|p| {
+            p.prove_task(&data).map_err(|e| e.to_string())
         })
     }
 }
