@@ -23,7 +23,6 @@ impl<'a> Prover<'a> {
         let keystore_path = &config.keystore_path;
         let keystore_password = &config.keystore_password;
 
-
         let geth_client = if config.proof_type == ProofType::Chunk {
             Some(Rc::new(RefCell::new(
                 GethClient::new(
@@ -50,7 +49,6 @@ impl<'a> Prover<'a> {
     pub fn get_proof_type(&self) -> ProofType {
         self.config.proof_type
     }
-
 
     pub fn prove_task(&self, task: &Task) -> Result<ProofDetail> {
         log::info!("[prover] start to prove_task, task id: {}", task.id);
