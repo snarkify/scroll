@@ -2479,7 +2479,7 @@ dependencies = [
 [[package]]
 name = "halo2_proofs"
 version = "1.1.0"
-source = "git+https://github.com/snarkify/halo2-scroll.git?tag=snarkify-v0.1.5#7ab6227e118b58c58a5ade057a6debc5fa5f7368"
+source = "git+ssh://git@github.com/snarkify/halo2-scroll.git?tag=snarkify-v0.1.5#7ab6227e118b58c58a5ade057a6debc5fa5f7368"
 dependencies = [
  "ark-std 0.3.0",
  "blake2b_simd",

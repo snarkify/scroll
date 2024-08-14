@@ -54,6 +54,10 @@ jobs:
         uses: Swatinem/rust-cache@v2
         with:
           workspaces: "prover -> target"
+      - name: Setup ssh to private repo
+        run: |
+            eval `ssh-agent -s`
+            ssh-add - <<< '${{ secrets.ACTION_KEY }}'
       - name: Cargo check
         run: cargo check --all-features
       - name: Cargo fmt
@@ -76,6 +80,10 @@ jobs:
         uses: Swatinem/rust-cache@v2
         with:
           workspaces: "prover -> target"
+      - name: Setup ssh to private repo
+        run: |
+          eval `ssh-agent -s`
+          ssh-add - <<< '${{ secrets.ACTION_KEY }}'
       - name: Run clippy
         run: cargo clippy --all-features --all-targets -- -D warnings
 
@@ -94,6 +102,10 @@ jobs:
         uses: Swatinem/rust-cache@v2
         with:
           workspaces: "prover -> target"
+      - name: Setup ssh to private repo
+        run: |
+          eval `ssh-agent -s`
+          ssh-add - <<< '${{ secrets.ACTION_KEY }}'
       - name: Test
         run: |
           make prover
