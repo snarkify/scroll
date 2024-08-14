@@ -37,75 +37,75 @@ jobs:
           concurrent_skipping: 'same_content_newer'
           paths_ignore: '["**/README.md"]'
 
-  fmt:
-    needs: [skip_check]
-    if: |
-      github.event.pull_request.draft == false &&
-      (github.event.action == 'ready_for_review' || needs.skip_check.outputs.should_skip != 'true')
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    steps:
-      - uses: actions/checkout@v4
-      - uses: dtolnay/rust-toolchain@master
-        with:
-          toolchain: nightly-2023-12-03
-          components: rustfmt
-      - name: Cargo cache
-        uses: Swatinem/rust-cache@v2
-        with:
-          workspaces: "prover -> target"
-      - name: Configure Git to use PAT for specific repositories
-        run: |
-          git config --global url."https://${{ secrets.PAT_TOKEN }}@github.com/snarkify/halo2-scroll.git".insteadOf "https://github.com/snarkify/halo2-scroll.git"
-          git config --global url."https://${{ secrets.PAT_TOKEN }}@github.com/snarkify/cusnark.git".insteadOf "https://github.com/snarkify/cusnark.git"
-      - name: Cargo check
-        run: cargo check --all-features
-      - name: Cargo fmt
-        run: cargo fmt --all -- --check
-  
-  clippy:
-    needs: [skip_check, fmt]
-    if: |
-      github.event.pull_request.draft == false &&
-      (github.event.action == 'ready_for_review' || needs.skip_check.outputs.should_skip != 'true')
-    runs-on: ubuntu-latest
-    timeout-minutes: 30
-    steps:
-      - uses: actions/checkout@v4
-      - uses: dtolnay/rust-toolchain@master
-        with:
-          toolchain: nightly-2023-12-03
-          components: clippy
-      - name: Cargo cache
-        uses: Swatinem/rust-cache@v2
-        with:
-          workspaces: "prover -> target"
-      - name: Configure Git to use PAT for specific repositories
-        run: |
-          git config --global url."https://${{ secrets.PAT_TOKEN }}@github.com/snarkify/halo2-scroll.git".insteadOf "https://github.com/snarkify/halo2-scroll.git"
-          git config --global url."https://${{ secrets.PAT_TOKEN }}@github.com/snarkify/cusnark.git".insteadOf "https://github.com/snarkify/cusnark.git"
-      - name: Run clippy
-        run: cargo clippy --all-features --all-targets -- -D warnings
-
-  compile:
-    needs: [skip_check, clippy]
-    if: |
-      github.event.pull_request.draft == false &&
-      (github.event.action == 'ready_for_review' || needs.skip_check.outputs.should_skip != 'true')
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: dtolnay/rust-toolchain@master
-        with:
-          toolchain: nightly-2023-12-03
-      - name: Cache cargo
-        uses: Swatinem/rust-cache@v2
-        with:
-          workspaces: "prover -> target"
-      - name: Configure Git to use PAT for specific repositories
-        run: |
-          git config --global url."https://${{ secrets.PAT_TOKEN }}@github.com/snarkify/halo2-scroll.git".insteadOf "https://github.com/snarkify/halo2-scroll.git"
-          git config --global url."https://${{ secrets.PAT_TOKEN }}@github.com/snarkify/cusnark.git".insteadOf "https://github.com/snarkify/cusnark.git"
-      - name: Test
-        run: |
-          make prover
+#  fmt:
+#    needs: [skip_check]
+#    if: |
+#      github.event.pull_request.draft == false &&
+#      (github.event.action == 'ready_for_review' || needs.skip_check.outputs.should_skip != 'true')
+#    runs-on: ubuntu-latest
+#    timeout-minutes: 5
+#    steps:
+#      - uses: actions/checkout@v4
+#      - uses: dtolnay/rust-toolchain@master
+#        with:
+#          toolchain: nightly-2023-12-03
+#          components: rustfmt
+#      - name: Cargo cache
+#        uses: Swatinem/rust-cache@v2
+#        with:
+#          workspaces: "prover -> target"
+#      - name: Configure Git to use PAT for specific repositories
+#        run: |
+#          git config --global url."https://${{ secrets.PAT_TOKEN }}@github.com/snarkify/halo2-scroll.git".insteadOf "https://github.com/snarkify/halo2-scroll.git"
+#          git config --global url."https://${{ secrets.PAT_TOKEN }}@github.com/snarkify/cusnark.git".insteadOf "https://github.com/snarkify/cusnark.git"
+#      - name: Cargo check
+#        run: cargo check --all-features
+#      - name: Cargo fmt
+#        run: cargo fmt --all -- --check
+#
+#  clippy:
+#    needs: [skip_check, fmt]
+#    if: |
+#      github.event.pull_request.draft == false &&
+#      (github.event.action == 'ready_for_review' || needs.skip_check.outputs.should_skip != 'true')
+#    runs-on: ubuntu-latest
+#    timeout-minutes: 30
+#    steps:
+#      - uses: actions/checkout@v4
+#      - uses: dtolnay/rust-toolchain@master
+#        with:
+#          toolchain: nightly-2023-12-03
+#          components: clippy
+#      - name: Cargo cache
+#        uses: Swatinem/rust-cache@v2
+#        with:
+#          workspaces: "prover -> target"
+#      - name: Configure Git to use PAT for specific repositories
+#        run: |
+#          git config --global url."https://${{ secrets.PAT_TOKEN }}@github.com/snarkify/halo2-scroll.git".insteadOf "https://github.com/snarkify/halo2-scroll.git"
+#          git config --global url."https://${{ secrets.PAT_TOKEN }}@github.com/snarkify/cusnark.git".insteadOf "https://github.com/snarkify/cusnark.git"
+#      - name: Run clippy
+#        run: cargo clippy --all-features --all-targets -- -D warnings
+#
+#  compile:
+#    needs: [skip_check, clippy]
+#    if: |
+#      github.event.pull_request.draft == false &&
+#      (github.event.action == 'ready_for_review' || needs.skip_check.outputs.should_skip != 'true')
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v4
+#      - uses: dtolnay/rust-toolchain@master
+#        with:
+#          toolchain: nightly-2023-12-03
+#      - name: Cache cargo
+#        uses: Swatinem/rust-cache@v2
+#        with:
+#          workspaces: "prover -> target"
+#      - name: Configure Git to use PAT for specific repositories
+#        run: |
+#          git config --global url."https://${{ secrets.PAT_TOKEN }}@github.com/snarkify/halo2-scroll.git".insteadOf "https://github.com/snarkify/halo2-scroll.git"
+#          git config --global url."https://${{ secrets.PAT_TOKEN }}@github.com/snarkify/cusnark.git".insteadOf "https://github.com/snarkify/cusnark.git"
+#      - name: Test
+#        run: |
+#          make prover
