@@ -54,11 +54,16 @@ jobs:
         uses: Swatinem/rust-cache@v2
         with:
           workspaces: "prover -> target"
-      - name: Setup SSH
+      - name: Setup SSH for halo2_proofs
         uses: MrSquaare/ssh-setup-action@v3
         with:
           host: github.com
           private-key: ${{ secrets.ACTION_KEY }}
+      - name: Setup SSH for cusnark
+        uses: MrSquaare/ssh-setup-action@v3
+        with:
+          host: github.com
+          private-key: ${{ secrets.CUSNARK_CLONE_KEY }}
       - name: Cargo check
         run: cargo check --all-features
       - name: Cargo fmt
@@ -81,11 +86,16 @@ jobs:
         uses: Swatinem/rust-cache@v2
         with:
           workspaces: "prover -> target"
-      - name: Setup SSH
+      - name: Setup SSH for halo2_proofs
         uses: MrSquaare/ssh-setup-action@v3
         with:
           host: github.com
           private-key: ${{ secrets.ACTION_KEY }}
+      - name: Setup SSH for cusnark
+        uses: MrSquaare/ssh-setup-action@v3
+        with:
+          host: github.com
+          private-key: ${{ secrets.CUSNARK_CLONE_KEY }}
       - name: Run clippy
         run: cargo clippy --all-features --all-targets -- -D warnings
 
@@ -104,11 +114,16 @@ jobs:
         uses: Swatinem/rust-cache@v2
         with:
           workspaces: "prover -> target"
-      - name: Setup SSH
+      - name: Setup SSH for halo2_proofs
         uses: MrSquaare/ssh-setup-action@v3
         with:
           host: github.com
           private-key: ${{ secrets.ACTION_KEY }}
+      - name: Setup SSH for cusnark
+        uses: MrSquaare/ssh-setup-action@v3
+        with:
+          host: github.com
+          private-key: ${{ secrets.CUSNARK_CLONE_KEY }}
       - name: Test
         run: |
           make prover
