@@ -1,4 +1,4 @@
-# The build step is skpped, one should build on the host first
+# The build step is skipped, one should build on the host first
 # Use the NVIDIA CUDA runtime image for the runtime stage
 FROM nvidia/cuda:12.3.0-base-ubuntu22.04
 
