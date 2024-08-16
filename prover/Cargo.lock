@@ -1096,9 +1096,9 @@ dependencies = [
 
 [[package]]
 name = "cmake"
-version = "0.1.50"
+version = "0.1.51"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a31c789563b815f77f4250caee12365734369f942439b7defd71e18a48197130"
+checksum = "fb1e43aa7fd152b1f968787f7dbcdeb306d1867ff373c69955211876c053f91a"
 dependencies = [
  "cc",
 ]
@@ -4460,9 +4460,9 @@ dependencies = [
 
 [[package]]
 name = "scc"
-version = "2.1.2"
+version = "2.1.15"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "af947d0ca10a2f3e00c7ec1b515b7c83e5cb3fa62d4c11a64301d9eec54440e9"
+checksum = "c478f373151538826ed50feaceeef7095ad435065a48153af789005fd5e44c0d"
 dependencies = [
  "sdd",
 ]
@@ -4506,9 +4506,9 @@ dependencies = [
 
 [[package]]
 name = "sdd"
-version = "0.2.0"
+version = "3.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b84345e4c9bd703274a082fb80caaa99b7612be48dfaa1dd9266577ec412309d"
+checksum = "0495e4577c672de8254beb68d01a9b62d0e8a13c099edecdbedccce3223cd29f"
 
 [[package]]
 name = "sec1"
