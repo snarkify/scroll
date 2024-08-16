@@ -51,4 +51,3 @@ lint:
 snarkify:
 	GO_TAG=${GO_TAG} GIT_REV=${GIT_REV} ZK_VERSION=${ZK_VERSION} cargo build --bin snarkify --release
 	rm -rf ./lib && mkdir ./lib
-	find target/ -name "libzktrie.so" | xargs -I{} cp {} ./lib

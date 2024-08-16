@@ -6,11 +6,9 @@ WORKDIR /snarkify
 
 # Copy the build artifact from the build stage
 COPY target/release/snarkify /usr/local/bin/snarkify
-COPY lib/libzktrie.so /usr/local/lib/libzktrie.so
 COPY config.json .
 # Set environment variables
-ENV LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH \
-    SCROLL_PROVER_ASSETS_DIR=/snarkify-data/assets_curie,/snarkify-data/assets_darwin \
+ENV SCROLL_PROVER_ASSETS_DIR=/snarkify-data/assets_curie,/snarkify-data/assets_darwin \
     RUST_MIN_STACK=100000000
 # Set the entrypoint for the container
 ENTRYPOINT ["snarkify"]

@@ -5,7 +5,7 @@ following step3 & 4 in https://www.notion.so/scrollzkp/How-to-run-a-batch-prover
 3. setting up envrionment variable
 ```shell
 export LD_LIBRARY_PATH=$(pwd)/lib:$LD_LIBRARY_PATH
-export SCROLL_PROVER_ASSETS_DIR=assets,assets
+export SCROLL_PROVER_ASSETS_DIR=volume/assets_curie,volume/assets_darwin
 export RUST_MIN_STACK=100000000
 export CHAIN_ID=534351 #update here, 534351 for sepolia, and 534352 for mainnet
 ```
