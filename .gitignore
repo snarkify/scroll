@@ -24,3 +24,7 @@ sftp-config.json
 *~
 
 target
+
+# snarkify
+prover/run_batch.sh
+prover/run_real_batch.sh

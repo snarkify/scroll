@@ -5,14 +5,14 @@
     "db_path": "unique-db-path-for-prover-1",
     "prover_type": 2,
     "low_version_circuit": {
-        "hard_fork_name": "bernoulli",
-        "params_path": "/snarkify-data/params",
-        "assets_path": "/snarkify-data/assets"
-    },
-    "high_version_circuit": {
         "hard_fork_name": "curie",
         "params_path": "/snarkify-data/params",
-        "assets_path": "/snarkify-data/assets"
+        "assets_path": "/snarkify-data/assets_curie"
+    },
+    "high_version_circuit": {
+        "hard_fork_name": "darwin",
+        "params_path": "/snarkify-data/params",
+        "assets_path": "/snarkify-data/assets_darwin"
     },
     "coordinator": {
         "base_url": "https://sepolia-coordinator.scroll.io",
