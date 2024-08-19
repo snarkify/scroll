@@ -9,6 +9,7 @@ edition = "2021"
 [patch.crates-io]
 ethers-signers  = { git = "https://github.com/scroll-tech/ethers-rs.git", branch = "v2.0.7" }
 halo2curves = { git = "https://github.com/scroll-tech/halo2curves", branch = "v0.1.0" }
+zstd = { git = "https://github.com/scroll-tech/zstd-rs", branch = "hack/mul-block", features = ["experimental"] }
 [patch."https://github.com/privacy-scaling-explorations/halo2.git"]
 halo2_proofs = {  git = "https://github.com/snarkify/halo2-scroll.git", tag = "snarkify-v0.1.5" }
 [patch."https://github.com/privacy-scaling-explorations/poseidon.git"]
