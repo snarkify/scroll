@@ -6,10 +6,9 @@ use crate::{
     config::Config,
     geth_client::GethClient,
     key_signer::KeySigner,
-    types::{ProofDetail, ProverType, Task},
+    types::{ProofDetail, ProverType, Task, TaskType},
     zk_circuits_handler::{CircuitsHandler, CircuitsHandlerProvider},
 };
-
 
 pub struct Prover<'a> {
     config: &'a Config,
@@ -50,6 +49,12 @@ impl<'a> Prover<'a> {
     }
 
     pub fn prove_task(&self, task: &Task) -> Result<ProofDetail> {
+        let prover_type = self.get_proof_type();
+        if (task.task_type == TaskType::Chunk && prover_type != ProverType::Chunk) ||
+            ((task.task_type == TaskType::Batch || task.task_type == TaskType::Bundle) && prover_type != ProverType::Batch) {
+            panic!("Task type and prover type mismatch! task type: {:?}, prover type: {:?}", task.task_type, prover_type)
+        }
+
         log::info!("[prover] start to prove_task, task id: {}", task.id);
         let handler: Rc<Box<dyn CircuitsHandler>> = self
             .circuits_handler_provider
