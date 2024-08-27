@@ -1353,7 +1353,7 @@ dependencies = [
 [[package]]
 name = "cusnark"
 version = "0.1.0"
-source = "git+https://github.com/snarkify/cusnark.git?tag=v0.1.2#d02bb7e1abf1049b646eff39198af755176417e2"
+source = "git+https://github.com/snarkify/cusnark.git?tag=v0.1.3#10381ff24b2f8621b7ce2adf9e88294e098c05a2"
 dependencies = [
  "ark-bn254",
  "ark-ec",
@@ -2408,7 +2408,7 @@ dependencies = [
 [[package]]
 name = "halo2_proofs"
 version = "1.1.0"
-source = "git+https://github.com/snarkify/halo2-scroll.git?tag=snarkify-v0.1.5#7ab6227e118b58c58a5ade057a6debc5fa5f7368"
+source = "git+https://github.com/snarkify/halo2-scroll.git?tag=snarkify-v0.1.6#77056c2c0b694bcfce9a0ad0e03b22afcfb54608"
 dependencies = [
  "ark-std 0.3.0",
  "blake2b_simd",
@@ -4141,7 +4141,7 @@ dependencies = [
 [[package]]
 name = "revm-precompile"
 version = "7.0.0"
-source = "git+https://github.com/scroll-tech/revm?branch=scroll-evm-executor/v36#36c304d9e9ba4e4b2d5468d91a6bd27210133b6a"
+source = "git+https://github.com/scroll-tech/revm?branch=scroll-evm-executor/v36#8543dd627348907773d8057807b6a310b276bb30"
 dependencies = [
  "aurora-engine-modexp",
  "c-kzg",
@@ -4157,7 +4157,7 @@ dependencies = [
 [[package]]
 name = "revm-primitives"
 version = "4.0.0"
-source = "git+https://github.com/scroll-tech/revm?branch=scroll-evm-executor/v36#36c304d9e9ba4e4b2d5468d91a6bd27210133b6a"
+source = "git+https://github.com/scroll-tech/revm?branch=scroll-evm-executor/v36#8543dd627348907773d8057807b6a310b276bb30"
 dependencies = [
  "alloy-primitives",
  "auto_impl",
@@ -4460,9 +4460,9 @@ dependencies = [
 
 [[package]]
 name = "scc"
-version = "2.1.15"
+version = "2.1.16"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c478f373151538826ed50feaceeef7095ad435065a48153af789005fd5e44c0d"
+checksum = "aeb7ac86243095b70a7920639507b71d51a63390d1ba26c4f60a552fbb914a37"
 dependencies = [
  "sdd",
 ]
@@ -4965,7 +4965,7 @@ dependencies = [
 [[package]]
 name = "sppark"
 version = "0.1.5"
-source = "git+https://github.com/snarkify/cusnark.git?tag=v0.1.2#d02bb7e1abf1049b646eff39198af755176417e2"
+source = "git+https://github.com/snarkify/cusnark.git?tag=v0.1.3#10381ff24b2f8621b7ce2adf9e88294e098c05a2"
 dependencies = [
  "cc",
  "which",
