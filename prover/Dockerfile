@@ -8,7 +8,8 @@ WORKDIR /snarkify
 COPY target/release/snarkify /usr/local/bin/snarkify
 COPY config.json .
 # Set environment variables
-ENV SCROLL_PROVER_ASSETS_DIR=/snarkify-data/assets_curie,/snarkify-data/assets_darwin \
-    RUST_MIN_STACK=100000000
+ENV SCROLL_PROVER_ASSETS_DIR=/snarkify-data/assets_low,/snarkify-data/assets_high\
+    RUST_MIN_STACK=100000000 \
+    CHAIN_ID=534352
 # Set the entrypoint for the container
 ENTRYPOINT ["snarkify"]

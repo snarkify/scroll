@@ -1,26 +1,26 @@
 {
-    "prover_name": "prover-1",
-    "keystore_path": "keystore.json",
+    "prover_name": "snarkify-chunk-prover-test",
+    "keystore_path": "/snarkify-data/keystore.json",
     "keystore_password": "prover-pwd",
-    "db_path": "unique-db-path-for-prover-1",
+    "db_path": "/snarkify-data/bbolt_db",
     "prover_type": 1,
     "low_version_circuit": {
-        "hard_fork_name": "curie",
-        "params_path": "/snarkify-data/params",
-        "assets_path": "/snarkify-data/assets_curie"
-    },
-    "high_version_circuit": {
         "hard_fork_name": "darwin",
         "params_path": "/snarkify-data/params",
-        "assets_path": "/snarkify-data/assets_darwin"
+        "assets_path": "/snarkify-data/assets_low"
+    },
+    "high_version_circuit": {
+        "hard_fork_name": "darwinV2",
+        "params_path": "/snarkify-data/params",
+        "assets_path": "/snarkify-data/assets_high"
     },
     "coordinator": {
-        "base_url": "https://sepolia-coordinator.scroll.io",
+        "base_url": "https://coordinator.scroll.io",
         "retry_count": 10,
         "retry_wait_time_sec": 10,
-        "connection_timeout_sec": 30
+        "connection_timeout_sec": 200
     },
     "l2geth": {
-        "endpoint": "https://purple-cool-grass.scroll-testnet.quiknode.pro/7c71f2df0436f31b249b4158a1ef4dc1ddfe5248/"
+        "endpoint": "https://necessary-delicate-lambo.scroll-mainnet.quiknode.pro/eeabd23b861a99d7a6fd7fa38dcf7511ebd8a007"
     }
 }

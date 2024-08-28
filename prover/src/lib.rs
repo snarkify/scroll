@@ -1,3 +1,4 @@
+#![feature(core_intrinsics)]
 pub mod config;
 mod coordinator_client;
 mod geth_client;
