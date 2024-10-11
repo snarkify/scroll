@@ -9,7 +9,7 @@ use reqwest_retry::{policies::ExponentialBackoff, RetryTransientMiddleware};
 use serde::Serialize;
 
 pub struct Api {
-    url_base: Url,
+    url_base: String,
     send_timeout: Duration,
     pub client: ClientWithMiddleware,
 }
@@ -31,7 +31,7 @@ impl Api {
             .build();
 
         Ok(Self {
-            url_base: Url::parse(url_base)?,
+            url_base: url_base.to_string(),
             send_timeout,
             client,
         })
@@ -139,6 +139,9 @@ impl Api {
     }
 
     fn build_url(&self, method: &str) -> Result<Url> {
-        self.url_base.join(method).map_err(|e| anyhow::anyhow!(e))
+        let full_url = format!("{}/{}",
+                               self.url_base.trim_end_matches('/'),
+                               method.trim_start_matches('/'));
+        Url::parse(&full_url).map_err(|e| anyhow::anyhow!(e))
     }
 }
