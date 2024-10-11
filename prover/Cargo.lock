@@ -1079,7 +1079,7 @@ dependencies = [
 [[package]]
 name = "cusnark"
 version = "0.1.0"
-source = "git+https://github.com/snarkify/cusnark.git?tag=v0.1.4#c437376100ea1209a6655d0727ece3b0d9a62cb7"
+source = "git+https://github.com/snarkify/cusnark.git?tag=v0.1.6#904c00b756e558790d9260579df2a29f8b007489"
 dependencies = [
  "ark-bn254",
  "ark-ec",
@@ -2107,7 +2107,7 @@ dependencies = [
 [[package]]
 name = "halo2_proofs"
 version = "1.1.0"
-source = "git+https://github.com/snarkify/halo2-scroll.git?tag=snarkify-v0.1.7#68a69c323b2778e194a63d212895384f0478370a"
+source = "git+https://github.com/snarkify/halo2-scroll.git?tag=snarkify-v0.1.9#5f0b18daa501dd5adb50e563b64228a793aed8ef"
 dependencies = [
  "ark-std 0.3.0",
  "blake2b_simd",
@@ -4496,7 +4496,7 @@ dependencies = [
 [[package]]
 name = "sppark"
 version = "0.1.5"
-source = "git+https://github.com/snarkify/cusnark.git?tag=v0.1.4#c437376100ea1209a6655d0727ece3b0d9a62cb7"
+source = "git+https://github.com/snarkify/cusnark.git?tag=v0.1.6#904c00b756e558790d9260579df2a29f8b007489"
 dependencies = [
  "cc",
  "which",
